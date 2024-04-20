@@ -2,10 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+     content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <title>Tinder</title>
+    <style>
+        .detailscontainer{
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="w-full h-screen bg-black font-['Segoe UI']">
+        <div class="imagecontainer w-full h-screen relative">
+           <div class="maincard z-[3] w-full h-screen absolute bg-orange-600">
+                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+           </div> 
+           <div class="incommingcard z-[2] w-full h-screen absolute bg-green-600">
+
+           </div> 
+        </div>
+        <div class="absolute top-0 left-0 z-[4] w-full h-screen flex flex-col justify-between">
+            <div class="navbar py-5 px-6 flex justify-between items-center text-white">
+                <div class="prflimg w-[4rem] h-[4rem] rounded-full overflow-hidden bg-red-600">
+                    <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+                <h3 class="text-xl font-medium tracking-tighter">They liked you</h3>
+                <div class="chaticon relative flex justify-center items-center rounded-full w-[4rem] h-[4rem] bg-white/30">
+                    <i class="text-[25px] opacity-90 ri-chat-3-fill"></i>
+                    <div class="badge absolute top-0 right-0  flex justify-center items-center w-5 h-5 bg-[#FC5149] rounded-full">
+                        <h5 class="text-[13px] font-medium">5</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="detailscontainer w-full py-5 px-6">
+                <div class="details w-full">
+                    <div class="flex gap-4 ">
+                        <i class="w-[1.6rem] h-[1.6rem] flex justify-center items-center font-semibold rounded-full bg-white/90 ri-corner-left-up-line"></i>
+                        <h3 class="text-white">USA, California</h3>
+                    </div>
+                    <div class="flex gap-5 text-white mt-1">
+                        <h1 class="font-regular tracking-tighter text-7xl">Victoria</h1>
+                        <h2 class="font-regular tracking-tighter text-7xl opacity-60">20</h1>
+                    </div>
+                    <div class="tags flex gap-3 text-white mt-4">
+                        <div class="tag flex items-center justify-between gap-3 bg-white/20 py-1 px-3 rounded-full">
+                            <i class="ri-music-2-fill"></i>
+                            <h3 class="text-sm tracking-tighter">Music</h3>
+                        </div>
+                        <div class="tag flex items-center justify-between gap-3 bg-white/20 py-1 px-3 rounded-full">
+                            <i class="ri-music-2-fill"></i>
+                            <h3 class="text-sm tracking-tighter">Music</h3>
+                        </div>
+                        <div class="tag flex items-center justify-between gap-3 bg-white/20 py-1 px-3 rounded-full">
+                            <i class="ri-music-2-fill"></i>
+                            <h3 class="text-sm tracking-tighter">Music</h3>
+                        </div>
+                    </div>
+                    <div class="bio text-white/80 mt-5">
+                        <h3 class="text-xl">Bio</h3>
+                        <p class="text-lg mt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores non facilis exercitationem obcaecati nesciunt numquam ea! Suscipit tempore magni perferendis!</p>
+                    </div>
+                    <div class="flex gap-1 mt-10">
+                        <button class="py-3 bg-white w-1/2 rounded-xl">
+                            <i class="text-3xl font-semibold ri-close-line"></i>
+                        </button>
+                        <button class="py-3 bg-[#FC5149] w-1/2 rounded-xl">
+                            <i class="text-3xl font-semibold text-white ri-heart-2-fill"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 </body>
 </html>
