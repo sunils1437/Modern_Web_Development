@@ -17,7 +17,7 @@ let users = [
       {
         iconInt: '<i class="ri-gamepad-line"></i>',
         nameInt: "Gamming",
-      }
+      },
     ],
     bio: "Anurag is a OPKing he is always playing a BGMI game such as Bettel Ground Mobile India this game is too good and intesting for Pro Playes also intresing for Noob player such as Kalmaster.",
     isFriend: null,
@@ -39,7 +39,7 @@ let users = [
       {
         iconInt: '<i class="ri-code-s-slash-fill"></i>',
         nameInt: "Coding",
-      }
+      },
     ],
     bio: "Sunil is a MRDracula he is always playing a BGMI game such as Bettel Ground Mobile India this game is too good and intesting for Pro Playes also intresing for Noob player such as Kalmaster.",
     isFriend: null,
@@ -61,7 +61,7 @@ let users = [
       {
         iconInt: '<i class="ri-paint-brush-line"></i>',
         nameInt: "Painting",
-      }
+      },
     ],
     bio: "Vivek is a TMKing he is always playing a BGMI game such as Bettel Ground Mobile India this game is too good and intesting for Pro Playes also intresing for Noob player such as Kalmaster.",
     isFriend: null,
@@ -98,37 +98,37 @@ let users = [
     name: "Rashika",
     age: 21,
     interest: [
-        {
-          iconInt: '<i class="ri-gamepad-line"></i>',
-          nameInt: "Gamming",
-        },
-        {
-          iconInt: '<i class="ri-service-line"></i>',
-          nameInt: "surgeon",
-        },
-      ],
+      {
+        iconInt: '<i class="ri-gamepad-line"></i>',
+        nameInt: "Gamming",
+      },
+      {
+        iconInt: '<i class="ri-service-line"></i>',
+        nameInt: "surgeon",
+      },
+    ],
     bio: "Rashika is a RashikaNoob he is always playing a BGMI game such as Bettel Ground Mobile India this game is too good and intesting for Pro Playes also intresing for Noob player such as Kalmaster.",
     isFriend: null,
   },
 ];
 
-let curr = 4;
+let curr = 0;
+let isAminating = false;
+let iscontentAminating = false;
 
 function select(elem) {
   return document.querySelector(elem);
 }
 
-(function setInitial() {
-  select(".maincard img").src = users[curr].displayPic;
-  select(".incommingcard img").src = users[curr + 1]?.displayPic;
-  select(".prflimg img").src = users[curr].profilePic;
-  select(".badge h5").textContent = users[curr].pendingMessage;
-  select(".location").textContent = users[curr].location;
-  select(".name").textContent = users[curr].name;
-  select(".age").textContent = users[curr].age;
+function setData(index) {
+  select(".prflimg img").src = users[index].profilePic;
+  select(".badge h5").textContent = users[index].pendingMessage;
+  select(".location h3").textContent = users[index].location;
+  select(".nameage h1").textContent = users[index].name;
+  select(".nameage h2").textContent = users[index].age;
 
   let clutter = "";
-  users[curr].interest.forEach(function (interest) {
+  users[index].interest.forEach(function (interest) {
     clutter += `<div class="tag flex items-center justify-between gap-3 bg-white/20 py-1 px-3 rounded-full">
         ${interest.iconInt}
         <h3 class="interest capitalize text-sm tracking-tighter">${interest.nameInt}</h3>
@@ -136,7 +136,128 @@ function select(elem) {
   });
   select(".tags").innerHTML = clutter;
 
-  select(".bio p").textContent = users[curr].bio;
+  select(".bio p").textContent = users[index].bio;
+}
+
+(function setInitial() {
+  select(".maincard img").src = users[curr].displayPic;
+  select(".incommingcard img").src = users[curr + 1]?.displayPic;
+  setData(curr);
   curr = 2;
 })();
 
+function imageChange() {
+  if (!isAminating) {
+    isAminating = true;
+    let tl = gsap.timeline({
+      onComplete: function () {
+        isAminating = false;
+
+        let main = select(".maincard");
+        let incomming = select(".incommingcard");
+
+        incomming.classList.remove("z-[2]");
+        incomming.classList.add("z-[3]");
+
+        main.classList.remove("z-[3]");
+        main.classList.add("z-[2]");
+
+        gsap.set(main, {
+          scale: 1,
+          opacity: 1,
+        });
+
+        if (curr === users.length) curr = 0;
+        select(".maincard img").src = users[curr].displayPic;
+        curr++;
+        incomming.classList.remove("incommingcard");
+        main.classList.remove("maincard");
+
+        incomming.classList.add("maincard");
+        main.classList.add("incommingcard");
+      },
+    });
+
+    tl.to(
+      ".maincard",
+      {
+        scale: 1.1,
+        opacity: 0,
+        ease: Circ,
+        duration: 0.9,
+      },
+      "start"
+    ).from(
+      ".incommingcard",
+      {
+        scale: 0.9,
+        opacity: 0,
+        ease: Circ,
+        duration: 1.1,
+      },
+      "start"
+    );
+  }
+}
+
+let deny = select(".deny");
+let accept = select(".accept");
+
+deny.addEventListener("click", function () {
+  if (!iscontentAminating) {
+    iscontentAminating = true;
+    imageChange();
+    setData(curr - 1);
+    let tl1 = gsap.timeline({
+      onComplete: function () {
+        iscontentAminating = false;
+        let elm = document.querySelectorAll(".element");
+        gsap.set(elm, {
+          y: "0%",
+          opacity: 1,
+        });
+      },
+    });
+    tl1.from(".details .element", {
+      y: "100%",
+      opacity: 0,
+      stagger: 0.06,
+      ease: Power4.easeInOut,
+      duration: 1.5,
+    });
+  }
+});
+accept.addEventListener("click", function () {
+  if (!iscontentAminating) {
+    iscontentAminating = true;
+    imageChange();
+    setData(curr - 1);
+    let tl1 = gsap.timeline({
+      onComplete: function () {
+        iscontentAminating = false;
+        let elm = document.querySelectorAll(".element");
+        gsap.set(elm, {
+          y: "0%",
+          opacity: 1,
+        });
+      },
+    });
+    tl1.from(".details .element", {
+      y: "100%",
+      opacity: 0,
+      stagger: 0.06,
+      ease: Power4.easeInOut,
+      duration: 1.5,
+    });
+  }
+});
+
+(function containerCreater() {
+  document.querySelectorAll(".element").forEach(function (element) {
+    let div = document.createElement("div");
+    div.classList.add(`${element.classList[1]}container`, "overflow-hidden");
+    div.appendChild(element);
+    select(".details").appendChild(div);
+    select(".btn").classList.remove("element");
+  });
+})();

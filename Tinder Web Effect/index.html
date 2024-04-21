@@ -15,11 +15,11 @@
 </head>
 <body>
     <div class="w-full h-screen bg-black font-['Segoe UI']">
-        <div class="imagecontainer w-full h-screen relative">
-           <div class="maincard z-[3] w-full h-screen absolute">
+        <div class="imagecontainer w-full h-screen relative overflow-hidden">
+           <div class="maincard z-[3] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[110%] h-[110%] absolute">
                 <img class="w-full h-full object-cover" src="" alt="">
            </div> 
-           <div class="incommingcard z-[2] w-full h-screen absolute">
+           <div class="incommingcard z-[2] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[110%] h-[110%] absolute">
             <img class="w-full h-full object-cover" src="" alt="">
            </div> 
         </div>
@@ -38,26 +38,26 @@
             </div>
             <div class="detailscontainer w-full py-5 px-6">
                 <div class="details w-full">
-                    <div class="flex gap-4 ">
+                    <div class="element location flex gap-4 ">
                         <i class="w-[1.6rem] h-[1.6rem] flex justify-center items-center font-semibold rounded-full bg-white/90 ri-corner-left-up-line"></i>
-                        <h3 class="location text-white"></h3>
+                        <h3 class="text-white"></h3>
                     </div>
-                    <div class="flex gap-5 text-white mt-1">
-                        <h1 class="name font-regular tracking-tighter text-7xl"></h1>
-                        <h2 class="age font-regular tracking-tighter text-7xl opacity-60"></h1>
+                    <div class="element nameage flex gap-5 text-white mt-1 pb-3">
+                        <h1 class="font-regular tracking-tighter text-7xl"></h1>
+                        <h2 class="font-regular tracking-tighter text-7xl opacity-60"></h1>
                     </div>
-                    <div class="tags flex gap-3 text-white mt-4">
+                    <div class="element tags flex gap-3 text-white mt-4">
                         
                     </div>
-                    <div class="bio text-white/80 mt-5">
+                    <div class="element bio text-white/80 mt-5">
                         <h3 class="text-xl">Bio</h3>
                         <p class="text-lg mt-2"></p>
                     </div>
-                    <div class="flex gap-1 mt-10">
-                        <button class="py-3 bg-white w-1/2 rounded-xl">
+                    <div class="element btn flex gap-1 mt-10">
+                        <button class="deny py-3 bg-white w-1/2 rounded-xl">
                             <i class="text-3xl font-semibold ri-close-line"></i>
                         </button>
-                        <button class="py-3 bg-[#FC5149] w-1/2 rounded-xl">
+                        <button class="accept py-3 bg-[#FC5149] w-1/2 rounded-xl">
                             <i class="text-3xl font-semibold text-white ri-heart-2-fill"></i>
                         </button>
                     </div>
